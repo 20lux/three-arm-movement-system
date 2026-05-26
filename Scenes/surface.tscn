@@ -1,0 +1,34 @@
+[gd_scene format=4 uid="uid://cluhtc4870kkm"]
+
+[ext_resource type="Texture2D" uid="uid://bli2fs0dxldks" path="res://Assets/tiles_spritesheet.png" id="1_o104s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+size = Vector2(106.844086, 72)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2tapi"]
+texture = ExtResource("1_o104s")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(70, 70)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
+
+[sub_resource type="TileSet" id="TileSet_uh5sj"]
+tile_size = Vector2i(70, 70)
+physics_layer_0/collision_layer = 128
+sources/0 = SubResource("TileSetAtlasSource_2tapi")
+
+[node name="Surface" type="StaticBody2D" unique_id=930201191]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075035023]
+position = Vector2(0, -35)
+scale = Vector2(10.520002, 1)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1251770327]
+tile_map_data = PackedByteArray("AAD4////AAABAAcAAAD5////AAABAAcAAAD6////AAABAAcAAAD7////AAABAAcAAAD8////AAABAAcAAAD9////AAABAAcAAAD+////AAABAAcAAAD/////AAABAAcAAAAAAP//AAABAAcAAAABAP//AAABAAcAAAACAP//AAABAAcAAAADAP//AAABAAcAAAAEAP//AAABAAcAAAAFAP//AAABAAcAAAAGAP//AAABAAcAAAAHAP//AAABAAcAAAA=")
+tile_set = SubResource("TileSet_uh5sj")

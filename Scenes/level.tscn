@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://lourh5pdbs6s"]
+
+[ext_resource type="Script" uid="uid://cqic3b40ddrbb" path="res://Scripts/game_controller.gd" id="1_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://2eccou7x7qj4" path="res://Scenes/player.tscn" id="2_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://8aoid7nmhbr5" path="res://Scenes/ceiling.tscn" id="3_wqkje"]
+[ext_resource type="PackedScene" uid="uid://bs18hlqenr0re" path="res://Scenes/wall.tscn" id="4_0f350"]
+[ext_resource type="PackedScene" uid="uid://cluhtc4870kkm" path="res://Scenes/surface.tscn" id="5_8c0lf"]
+[ext_resource type="Curve" uid="uid://c5h2adakwcc5h" path="res://Assets/tentacle_curve.tres" id="7_8c0lf"]
+[ext_resource type="PackedScene" uid="uid://4w3pca6idun" path="res://Scenes/platform.tscn" id="7_754fn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f350"]
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0f350"]
+
+[node name="Level" type="Node2D" unique_id=2011427984 node_paths=PackedStringArray("rays", "tentacles", "targets")]
+script = ExtResource("1_k5f4k")
+rays = [NodePath("Rays/Ray1"), NodePath("Rays/Ray2"), NodePath("Rays/Ray3")]
+tentacles = [NodePath("Tentacles/Tentacle_1"), NodePath("Tentacles/Tentacle_2"), NodePath("Tentacles/Tentacle_3")]
+targets = [NodePath("Tip1"), NodePath("Tip2"), NodePath("Tip3")]
+
+[node name="Player" parent="." unique_id=2004248986 instance=ExtResource("2_k5f4k")]
+position = Vector2(224, 160)
+physics_material_override = SubResource("PhysicsMaterial_0f350")
+lock_rotation = false
+
+[node name="Spawn" type="Node2D" parent="." unique_id=531187853]
+position = Vector2(576, 448)
+
+[node name="Rays" type="Node2D" parent="." unique_id=2127922328]
+
+[node name="Ray1" type="RayCast2D" parent="Rays" unique_id=1947492907]
+target_position = Vector2(400, 0)
+collision_mask = 128
+
+[node name="Ray2" type="RayCast2D" parent="Rays" unique_id=1109533608]
+target_position = Vector2(400, 100)
+collision_mask = 128
+
+[node name="Ray3" type="RayCast2D" parent="Rays" unique_id=1491037205]
+target_position = Vector2(400, -100)
+collision_mask = 128
+
+[node name="Tip1" type="StaticBody2D" parent="." unique_id=2123146233]
+position = Vector2(304, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip1" unique_id=1941292542]
+shape = SubResource("CircleShape2D_0f350")
+
+[node name="Tip2" type="StaticBody2D" parent="." unique_id=1373448621]
+position = Vector2(304, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip2" unique_id=1582468919]
+shape = SubResource("CircleShape2D_0f350")
+
+[node name="Tip3" type="StaticBody2D" parent="." unique_id=1065997589]
+position = Vector2(304, 152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip3" unique_id=1448272625]
+shape = SubResource("CircleShape2D_0f350")
+
+[node name="Ceiling" parent="." unique_id=930201191 instance=ExtResource("3_wqkje")]
+position = Vector2(576, 72)
+
+[node name="Wall" parent="." unique_id=301636813 instance=ExtResource("4_0f350")]
+position = Vector2(16, 560)
+
+[node name="Wall2" parent="." unique_id=1266039894 instance=ExtResource("4_0f350")]
+position = Vector2(1064, 560)
+
+[node name="Surface" parent="." unique_id=184318930 instance=ExtResource("5_8c0lf")]
+position = Vector2(576, 632)
+
+[node name="Platform" parent="." unique_id=1341847359 instance=ExtResource("7_754fn")]
+position = Vector2(328, 448)
+
+[node name="Platform2" parent="." unique_id=853881545 instance=ExtResource("7_754fn")]
+position = Vector2(576, 320)
+
+[node name="Platform3" parent="." unique_id=480051894 instance=ExtResource("7_754fn")]
+position = Vector2(840, 384)
+
+[node name="Platform4" parent="." unique_id=1296671889 instance=ExtResource("7_754fn")]
+position = Vector2(328, 144)
+rotation = -1.5707964
+
+[node name="Platform5" parent="." unique_id=1274216864 instance=ExtResource("7_754fn")]
+position = Vector2(840, 144)
+rotation = -1.5707964
+
+[node name="Tentacles" type="Node2D" parent="." unique_id=481728201]
+
+[node name="Tentacle_1" type="Line2D" parent="Tentacles" unique_id=404619249]
+top_level = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = ExtResource("7_8c0lf")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Tentacle_2" type="Line2D" parent="Tentacles" unique_id=1539076031]
+top_level = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = ExtResource("7_8c0lf")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Tentacle_3" type="Line2D" parent="Tentacles" unique_id=935240149]
+top_level = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = ExtResource("7_8c0lf")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
